@@ -7,7 +7,6 @@
 ```
 .
 ├── README.md
-├── install.sh              # 安装所有skills到 ~/.claude/skills
 ├── sync.sh                 # 同步上游更新
 ├── third-party/            # 别人的原版skills (submodule)
 │   ├── frontend-slides/    # git submodule
@@ -23,14 +22,28 @@
 
 ## 快速开始
 
+### 安装 Skills
+
 ```bash
-# 1. 安装所有skills到Claude Code
-./install.sh
+# 从本仓库的 modified/ 目录安装
+npx skills add https://github.com/heyyyss/my-agent-skills/modified/frontend-slides --skill frontend-slides
 
-# 2. 同步上游更新
+# 从任意GitHub仓库安装
+npx skills add https://github.com/user/repo --skill my-skill
+
+# 安装到指定位置
+npx skills add <url> --skill <name> --dir ~/.claude/skills/
+```
+
+### 同步上游更新
+
+```bash
 ./sync.sh
+```
 
-# 3. 查看原版和修改版的差异
+### 查看原版和修改版的差异
+
+```bash
 ./scripts/diff-skill.sh frontend-slides
 ```
 
@@ -67,13 +80,41 @@ cd modified/frontend-slides
 git remote add upstream ../../third-party/frontend-slides
 git fetch upstream
 git merge upstream/main  # 或 cherry-pick特定提交
+
+# 4. 重新安装更新后的skill
+npx skills add ./modified/frontend-slides --skill frontend-slides
 ```
 
-## 安装路径
+## Skills 安装路径
 
 默认安装到：`~/.claude/skills/`
 
-自定义路径：
+使用 `npx skills add` 时可指定其他位置：
 ```bash
-CLAUDE_SKILLS_DIR=~/my-skills ./install.sh
+npx skills add <url> --skill <name> --dir ~/my-skills
+```
+
+## 本地开发 Workflow
+
+```bash
+# 1. 克隆管理仓库
+git clone https://github.com/heyyyss/my-agent-skills.git
+cd my-agent-skills
+
+# 2. 同步上游（拉取 third-party 的更新）
+./sync.sh
+
+# 3. 对比并决定是否合并到 modified
+./scripts/diff-skill.sh frontend-slides
+
+# 4. 合并更新到 modified
+cd modified/frontend-slides
+git pull ../../third-party/frontend-slides main
+
+# 5. 解决冲突后提交
+git add .
+git commit -m "sync: merge upstream changes"
+
+# 6. 推送到你的fork
+git push origin main
 ```
