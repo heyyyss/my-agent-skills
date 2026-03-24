@@ -28,11 +28,6 @@
 # 从本仓库的 modified/ 目录安装
 npx skills add https://github.com/heyyyss/my-agent-skills/modified/frontend-slides --skill frontend-slides
 
-# 从任意GitHub仓库安装
-npx skills add https://github.com/user/repo --skill my-skill
-
-# 安装到指定位置
-npx skills add <url> --skill <name> --dir ~/.claude/skills/
 ```
 
 ### 同步上游更新
@@ -81,17 +76,6 @@ git remote add upstream ../../third-party/frontend-slides
 git fetch upstream
 git merge upstream/main  # 或 cherry-pick特定提交
 
-# 4. 重新安装更新后的skill
-npx skills add ./modified/frontend-slides --skill frontend-slides
-```
-
-## Skills 安装路径
-
-默认安装到：`~/.claude/skills/`
-
-使用 `npx skills add` 时可指定其他位置：
-```bash
-npx skills add <url> --skill <name> --dir ~/my-skills
 ```
 
 ## 本地开发 Workflow
