@@ -26,7 +26,7 @@
 
 ```bash
 # 从本仓库的 modified/ 目录安装
-npx skills add https://github.com/heyyyss/my-agent-skills/modified/frontend-slides --skill frontend-slides
+npx skills add https://github.com/heyyyss/my-agent-skills/modified --skill frontend-slides
 
 ```
 
@@ -55,11 +55,28 @@ npx skills add https://github.com/heyyyss/my-agent-skills/modified/frontend-slid
 ./scripts/add-skill.sh modified https://github.com/yourname/skill-name.git
 ```
 
-### 创建自己的skill
+### 创建自己的skill（custom/）
+
+在 `custom/` 目录下创建完全原创的 skill：
+
 ```bash
 mkdir custom/my-new-skill
-# 按标准结构创建SKILL.md等文件
+cd custom/my-new-skill
+
+# 创建标准结构
+cat > SKILL.md << 'EOF'
+---
+name: my-new-skill
+description: What it does. Use when user wants to [specific task].
+---
+
+# My New Skill
+
+Your skill content here...
+EOF
 ```
+
+`custom/` 目录下的 skill 是你完全自己创建的，不依赖任何上游仓库。
 
 ## 同步工作流
 

@@ -1,0 +1,7 @@
+# Place your custom skills here
+# Each skill should be in its own subdirectory with standard structure:
+# my-custom-skill/
+#   ├── SKILL.md
+#   ├── references/ (optional)
+#   ├── assets/ (optional)
+#   └── scripts/ (optional)

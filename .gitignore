@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules/
+
+# Claude Code local skills (if installed here for testing)
+.claude/skills/
+.agents/skills/
+
+# Environment
+.env
+.env.local
+
+# Python
+__pycache__/
+*.pyc
+
