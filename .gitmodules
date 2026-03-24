@@ -1,0 +1,3 @@
+[submodule "third-party/frontend-slides"]
+	path = third-party/frontend-slides
+	url = https://github.com/zarazhangrui/frontend-slides.git
